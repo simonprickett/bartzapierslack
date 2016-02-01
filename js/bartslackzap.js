@@ -11,7 +11,6 @@ switch(command) {
       null, 
       { 
         channel: input.channel, 
-        user: input.user, 
         text: '*Commands I know about:*\n\n' 
                 + '*' + triggerWord + ' status* - number of trains operating, any system wide messages\n'
                 + '*' + triggerWord + ' elevators* - network-wide elevator service status\n'
@@ -41,7 +40,6 @@ switch(command) {
           null, 
           { 
             channel: input.channel, 
-            user: input.user, 
             text: stationListMessage 
           }
         );
@@ -59,7 +57,6 @@ switch(command) {
               null, 
               { 
                 channel: input.channel, 
-                user: input.user, 
                 text: statusMessage 
               }
             );
@@ -76,7 +73,6 @@ switch(command) {
           null, 
           { 
             channel: input.channel, 
-            user: input.user, 
             text: json.bsa.description 
           }
         );
@@ -117,7 +113,6 @@ switch(command) {
             null, 
             { 
               channel: input.channel, 
-              user: input.user, 
               text: statusMessage 
             }
           );
@@ -128,7 +123,6 @@ switch(command) {
         null, 
         { 
           channel: input.channel, 
-          user: input.user, 
           text: 'Unknown command.' 
         }
       );
