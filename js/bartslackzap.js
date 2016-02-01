@@ -123,7 +123,7 @@ switch(command) {
         null, 
         { 
           channel: input.channel, 
-          text: 'Unknown command.' 
+          text: 'Unknown command.  Use ' + triggerWord + ' help for a list of commands.' 
         }
       );
     }
