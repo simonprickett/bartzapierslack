@@ -39,7 +39,7 @@ else:
         if 'etd' in departuresJson:
             message = '*Trains from ' + departuresJson['name'] + '*\n'
             for destination in departuresJson['etd']:
-                message += '\n*Towards ' + destination['destination'] + ' (Platform TODO):*\n\n';
+                message += '\n*Towards ' + destination['destination'] + ' (Platform ' + destination['estimate'][0]['platform'] + '):*\n\n';
                 for estimate in destination['estimate']:
                     message += 'TODO ' + estimate['length'] + ' cars.\n'
         else:
