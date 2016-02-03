@@ -1,7 +1,6 @@
 var command = input.text.toLowerCase().trim(),
     apiUrl = 'http://bart.crudworks.org/api',
-    triggerWord = 'heybart',
-    stationUrl;
+    triggerWord = 'heybart';
 
 command = command.replace(triggerWord, '').trim();
 
@@ -47,7 +46,7 @@ switch(command) {
       .catch(callback);
     break;
   case 'status':
-    fetch(apiUrl + '/' + command)
+    fetch(apiUrl + '/status')
           .then(function(res) {
             return res.json();
           })
@@ -81,15 +80,13 @@ switch(command) {
     break;
   default:
     // Assume it is a station until proven otherwise.
-    if (command.length === 4) {
-      stationUrl = apiUrl + '/departures/' + command;
- 
-      fetch(stationUrl)
+    if (command.length === 4) { 
+      fetch(apiUrl + '/departures/' + command)
         .then(function(res) {
           return res.json();
         })
         .then(function(json) {
-          var statusMessage = 'Sorry I don\'t know about station ' + command, 
+          var statusMessage,
               n, m, destination, estimate;
 
           if (json && json.etd) {
@@ -108,6 +105,8 @@ switch(command) {
                 statusMessage += ' ' + estimate.length + ' cars.\n';       
               }
             }
+          } else {
+            statusMessage = 'Sorry I don\'t know about station ' + command; 
           }
           callback(
             null, 
